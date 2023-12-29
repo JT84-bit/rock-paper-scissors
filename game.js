@@ -26,35 +26,63 @@ function playRound (playerChoice, computerChoice){
 
     if (playerChoice === "rock"){
         if (computerChoice === "paper"){
-            return "You Lose! Paper beats Rock"
+            console.log("You Lose! Paper beats Rock");
+            return "computer";
         }else if(computerChoice === "scissors"){
-            return "You Won! Rock beats Scissors"
+            console.log("You Won! Rock beats Scissors");
+            return "player";
         }else{
-            return "Tie!"
+            console.log("Tie!");
+            return "tie";
         }
     } else if (playerChoice === "paper"){
         if (computerChoice === "paper"){
-            return "Tie!"
+            console.log("Tie!");
+            return "tie";
         }else if(computerChoice === "scissors"){
-            return "You Lose! Scissors beats Paper"
+            console.log("You Lose! Scissors beats Paper");
+            return "computer";
         }else{
-            return "You Won! Paper beats Rock"
+            console.log("You Won! Paper beats Rock");
+            return "player";
         }
     } else {
         if (computerChoice === "paper"){
-            return "You Won! Scissor beats Paper"
+            console.log("You Won! Scissor beats Paper");
+            return "player";
         }else if(computerChoice === "scissors"){
-            return "Tie!"
+            console.log("Tie!");
+            return "tie";
         }else{
-            return "You Lose! Rock beats Scissors"
+            console.log("You Lose! Rock beats Scissors");
+            return "computer";
         }
     }
 }
 
 function game (){
 
-    let playerChoice = playerSelection();
-    let computerChoice = getComputerChoice();
-    console.log(playRound(playerChoice, computerChoice));
+    let playerScore = 0;
+    let computerScore = 0;
+    let rounds = 1;
+
+    while(rounds <= 5){
+        let playerChoice = playerSelection();
+        let computerChoice = getComputerChoice();
+        let result = playRound(playerChoice, computerChoice)
+        if (result === "player"){
+            playerScore += 1;
+            rounds += 1;
+        }else if (result === "computer"){
+            computerScore += 1;
+            rounds += 1;
+        }
+    }
+ 
+    if (computerScore > playerScore){
+        console.log("You lose " + playerScore + " : " + computerScore);
+    }else{
+        console.log("You Won " + playerScore + " : " + computerScore )
+    }
 }
     
