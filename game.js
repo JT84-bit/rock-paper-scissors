@@ -1,7 +1,7 @@
 const CHOICES = ["rock", "paper", "scissors"]
 
 function getComputerChoice () {
-    const computerChoice = CHOICES[Math.floor(Math.random() * CHOICES.length)];
+    let computerChoice = CHOICES[Math.floor(Math.random() * CHOICES.length)];
     return computerChoice;
 }
 
@@ -11,7 +11,7 @@ function playerSelection () {
     while(keepAsking){
         let = playerChoice = prompt("Choose: Rock, Paper or Scissors?")
 
-        playerChoice.toLowerCase();
+        playerChoice = playerChoice.toLowerCase();
         if (CHOICES.includes(playerChoice)){
             break;
         }else{
@@ -20,5 +20,41 @@ function playerSelection () {
         }
     }
     return playerChoice;
-    
 }
+
+function playRound (playerChoice, computerChoice){
+
+    if (playerChoice === "rock"){
+        if (computerChoice === "paper"){
+            return "You Lose! Paper beats Rock"
+        }else if(computerChoice === "scissors"){
+            return "You Won! Rock beats Scissors"
+        }else{
+            return "Tie!"
+        }
+    } else if (playerChoice === "paper"){
+        if (computerChoice === "paper"){
+            return "Tie!"
+        }else if(computerChoice === "scissors"){
+            return "You Lose! Scissors beats Paper"
+        }else{
+            return "You Won! Paper beats Rock"
+        }
+    } else {
+        if (computerChoice === "paper"){
+            return "You Won! Scissor beats Paper"
+        }else if(computerChoice === "scissors"){
+            return "Tie!"
+        }else{
+            return "You Lose! Rock beats Scissors"
+        }
+    }
+}
+
+function game (){
+
+    let playerChoice = playerSelection();
+    let computerChoice = getComputerChoice();
+    console.log(playRound(playerChoice, computerChoice));
+}
+    
